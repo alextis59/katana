@@ -1,0 +1,20 @@
+## Task: Annotate the given code with the corresponding unit test coverage needed based on the test case description
+
+## Instructions:
+
+Annotate the code with the corresponding unit test coverage needed by indicating which branches are reached based on the test case description:
+    - For each code line, add a comment at the end of the line depending on wheter the line should be reached according to the test case description
+    - '// #reached' if the line should be reached
+    - '// #not-reached' if the line should not be reached
+    - '// #reached #exit' if the line should be the last line executed in the function/class for the test case
+Annotate only the code of the function or class that needs to be tested.
+Output only the annotated code of the function or class being tested, not the whole file.
+
+### Tested code extract:
+```javascript
+{code}
+```
+
+### Tested function/class: {target_name}
+
+### Test case description: {test_case}

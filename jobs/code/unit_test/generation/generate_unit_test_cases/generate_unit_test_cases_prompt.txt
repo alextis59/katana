@@ -1,0 +1,25 @@
+Below is an extract of the file containing the necessary function/class:
+
+```javascript
+{code}
+```
+
+Generate test cases descriptions that will cover all lines and branches of the given function/class.
+Your test descriptions will be used to set up the tests functions (eg it("test description")) and your test cases must cover all lines and branches of the function/class.
+No need to test log function calls but it is important to verify that calls to external functions without return values are done with the correct args.
+It is important to focus on providing descriptive test case descriptions rather than technical ones and to indicate both what is being tested and what is the expected result.
+It is also important to focus on the behaviour of the tested function/class instead of the called functions.
+
+You should only respond in JSON format as described below:
+
+RESPONSE FORMAT:
+{
+    "testCases": [
+        "test case description",
+        "another test case description"
+    ]
+}
+
+Please ensure that your response can be parsed using JSON.parse.
+
+The function or class you need to test is named "{target_name}".

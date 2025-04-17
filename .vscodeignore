@@ -1,0 +1,5 @@
+benchmark/
+test/
+.gitignore
+.npmignore
+log/

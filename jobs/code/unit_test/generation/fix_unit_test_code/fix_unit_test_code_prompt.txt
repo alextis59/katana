@@ -1,0 +1,24 @@
+## Task: Fix unit test code for a JS function using test results
+
+## Tested code extract:
+```javascript
+{code}
+```
+
+## Unit test code:
+```javascript
+{test_code}
+```
+
+## Test execution output:
+```txt
+{test_results}
+```
+
+## Requirements:
+1. Carefully read the unit test code and the test execution output
+2. Fix the existing unit test code
+3. If there are recursive calls to the function being tested, do not mock the tested function itself and try to handle the recursion in the test
+4. Verify that jest.mock is not used to mock the whole module (as the given module paths are placeholders), instead use jest.spyOn to mock specific functions
+5. Only the code inside the test function can be modified
+6. Output only the fixed test function

@@ -1,0 +1,31 @@
+Task: Write unit test code for the corresponding test case for a JS function or class
+
+Instructions:
+1. Accurately write the test function based on the test case description
+2. Mock every needed function called inside the tested function/class (except for the function and modules that you do not have access to)
+3. If there are recursive calls to the function being tested, do not mock the tested function itself and try to handle the recursion in the test
+4. Complete or override parameters declared in beforeEach (if present) to fit the test case description
+5. Avoid using jest.mock to mock the whole module (as the path given in the template is a placeholder), instead use jest.spyOn to mock specific functions
+6. Unit test code should consist of a single test function matching the test case description with setup and cleanup inside of it
+7. Your answer must only include the test function, not the whole unit test file
+
+Tested code extract:
+```javascript
+{code}
+```
+
+Tested function/class: {target_name}
+
+Unit test template:
+```javascript
+{test_template}
+```
+
+Test case description: {test_case}
+
+Output only the test function, not the whole unit test file in the format below:
+```javascript
+it('[test_case_description]', () => {
+    // test code
+});
+```

@@ -1,0 +1,16 @@
+## Task: Generate JSDoc for a given JS function
+
+## JS function code extract:
+```javascript
+{code}
+```
+
+## Requirements:
+1. Generate JSDoc for the function: {target_name}
+2. If the JSDoc already exists, try to improve it if possible.
+3. Provide a clear but concise description of what the function does.
+4. Describe concisely the function parameters, including their data types, names, and descriptions.
+5. Clearly explain the return value of the function, including its data type and any possible values.
+6. If the function is a middleware or does not return anything, do not include the return value in the JSDoc.
+7. Number of @param in the JSDoc must match the number of params in the function (do not split a single param into multiple params in the JSDoc).
+8. Output only the JSDoc

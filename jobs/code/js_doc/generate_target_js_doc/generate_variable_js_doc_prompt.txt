@@ -1,0 +1,12 @@
+## Task: Generate JSDoc for a given JS module variable
+
+## JS variable code extract:
+```javascript
+{code}
+```
+
+## Requirements:
+1. Generate JSDoc for the variable: {target_name}.
+2. If the JSDoc already exists, try to improve it if possible.
+3. Provide a clear but concise description of what the variable is used for.
+4. Output only the JSDoc.

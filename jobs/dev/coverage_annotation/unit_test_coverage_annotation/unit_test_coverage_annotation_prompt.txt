@@ -1,0 +1,89 @@
+## Task: Annotate the given code with the corresponding unit test coverage needed based on the test case description
+
+## Instructions:
+
+Annotate the code with the corresponding unit test coverage needed by indicating which branches are executed based on the test case description:
+    - For each code line, add a comment at the end of the line depending on wheter the line should be executed according to the test case description
+    - '// #executed' if the line should be executed (also for 'if', 'else if', 'for', 'while' statements even if the condition is not met, as long as the statement is executed)
+    - '// #not-executed' if the line should not be executed
+Annotate only the code of the function or class that needs to be tested.
+Output only the annotated code of the function or class being tested, not the whole file.
+
+## Example
+
+### Tested code extract:
+```javascript
+// variable_validation.js
+const self = {
+
+    /**
+     * Check if a variable is a valid time string (HH:mm or HH:mm:ss)
+     * @param {string} value - value to check
+     * @returns {boolean} true if valid time string
+     */
+    isTime: (value, separator = ":") => {
+        let parts = value.split(separator);
+        if (parts.length < 2 || parts.length > 3) {
+            return false;
+        }else if (parts[0].length !== 2 || parts[1].length !== 2){
+            return false;
+        }else if (parts.length === 3 && parts[2].length !== 2){
+            return false;
+        }else if (!self.isIntegerString(parts[0]) || !self.isIntegerString(parts[1]) || (parts.length === 3 && !self.isIntegerString(parts[2]))){
+            return false;
+        }
+        let h = parseInt(parts[0]),
+            m = parseInt(parts[1]),
+            s = parts.length === 3 && parseInt(parts[2]);
+        if(isNaN(h) || isNaN(m) || (parts.length === 3 && isNaN(s))){
+            return false;
+        }else if (h < 0 || h > 23 || m < 0 || m > 59 || (s && (s < 0 || s > 59))){
+            return false;
+        }
+        return true;
+    }
+
+};
+
+module.exports = self;
+```
+
+### Tested function/class: variable_validation.isTime
+
+### Test case description: Should return false if the day part is not a valid integer
+
+### Output
+```javascript
+    isTime: (value, separator = ":") => { 
+        let parts = value.split(separator); // #executed
+        if (parts.length < 2 || parts.length > 3) { // #executed
+            return false; // #not-executed
+        }else if (parts[0].length !== 2 || parts[1].length !== 2){ // #executed
+            return false; // #not-executed
+        }else if (parts.length === 3 && parts[2].length !== 2){ // #executed
+            return false; // #not-executed
+        }else if (!self.isIntegerString(parts[0]) || !self.isIntegerString(parts[1]) || (parts.length === 3 && !self.isIntegerString(parts[2]))){ // #executed
+            return false; // #executed
+        }
+        let h = parseInt(parts[0]), // #not-executed
+            m = parseInt(parts[1]), // #not-executed
+            s = parts.length === 3 && parseInt(parts[2]); // #not-executed
+        if(isNaN(h) || isNaN(m) || (parts.length === 3 && isNaN(s))){ // #not-executed
+            return false; // #not-executed
+        }else if (h < 0 || h > 23 || m < 0 || m > 59 || (s && (s < 0 || s > 59))){ // #not-executed
+            return false; // #not-executed
+        }
+        return true; // #not-executed
+    }
+```
+
+## Current test case to annotate
+
+### Tested code extract:
+```javascript
+{code}
+```
+
+### Tested function/class: {target_name}
+
+### Test case description: {test_case}

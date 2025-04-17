@@ -1,0 +1,117 @@
+## Task: Annotate the given code with the corresponding unit test coverage needed based on the test case description
+
+## Instructions:
+
+Annotate the code with the corresponding unit test coverage needed by indicating which branches are reached based on the test case description:
+    - For each code line relevant to the given test case, add a comment at the end of the line depending on wheter the line should be reached according to the test case description
+    - '// #reached' if the line should be reached
+    - '// #not-reached' if the line should not be reached
+    - '// #reached #exit' if the line should be the last line executed in the function/class for the test case
+Annotate only the code of the function or class that needs to be tested.
+Output only the annotated code of the function or class being tested, not the whole file.
+
+## Example
+
+### Tested code extract:
+```javascript
+// variable_validation.js
+const self = {
+
+    /**
+     * Check if a variable is an integer string
+     * @param {string} value - value to check
+     * @returns {boolean} true if integer string
+     */
+    isIntegerString: (value) => {
+        return /^[0-9]+$/.test(value) || /^-[0-9]+$/.test(value);
+    },
+
+    /**
+     * Check if a variable is a valid time string (HH:mm or HH:mm:ss)
+     * @param {string} value - value to check
+     * @returns {boolean} true if valid time string
+     */
+    isTime: (value, separator = ":") => {
+        let parts = value.split(separator);
+        if (parts.length < 2 || parts.length > 3) {
+            return false;
+        }else if (parts[0].length !== 2 || parts[1].length !== 2){
+            return false;
+        }else if (parts.length === 3 && parts[2].length !== 2){
+            return false;
+        }else if (!self.isIntegerString(parts[0]) || !self.isIntegerString(parts[1]) || (parts.length === 3 && !self.isIntegerString(parts[2]))){
+            return false;
+        }
+        let h = parseInt(parts[0]),
+            m = parseInt(parts[1]),
+            s = parts.length === 3 && parseInt(parts[2]);
+        if(isNaN(h) || isNaN(m) || (parts.length === 3 && isNaN(s))){
+            return false;
+        }else if (h < 0 || h > 23 || m < 0 || m > 59 || (s && (s < 0 || s > 59))){
+            return false;
+        }
+        return true;
+    }
+
+};
+
+module.exports = self;
+```
+
+### Tested function/class: variable_validation.isTime
+
+### Test case description: Should return false if the day part is not a valid integer
+
+### Output
+```javascript
+    isTime: (value, separator = ":") => { 
+        let parts = value.split(separator); // #reached
+        if (parts.length < 2 || parts.length > 3) { // #reached
+            return false; // #not-reached
+        }else if (parts[0].length !== 2 || parts[1].length !== 2){ // #reached
+            return false; // #not-reached
+        }else if (parts.length === 3 && parts[2].length !== 2){ // #reached
+            return false; // #not-reached
+        }else if (!self.isIntegerString(parts[0]) || !self.isIntegerString(parts[1]) || (parts.length === 3 && !self.isIntegerString(parts[2]))){ // #reached
+            return false; // #reached #exit
+        }
+        let h = parseInt(parts[0]), // #not-reached
+            m = parseInt(parts[1]), // #not-reached
+            s = parts.length === 3 && parseInt(parts[2]); // #not-reached
+        if(isNaN(h) || isNaN(m) || (parts.length === 3 && isNaN(s))){
+            return false;
+        }else if (h < 0 || h > 23 || m < 0 || m > 59 || (s && (s < 0 || s > 59))){
+            return false;
+        }
+        return true;
+        let parts = value.split(separator); // #reached
+        if (parts.length < 2 || parts.length > 3) // #reached
+            return false; // #not-reached
+        if (parts[0].length !== 2 || parts[1].length !== 2) // #reached
+            return false; // #not-reached
+        if (parts.length === 3 && parts[2].length !== 2) // #reached
+            return false; // #not-reached
+        if (!self.isIntegerString(parts[0]) || !self.isIntegerString(parts[1]) || (parts.length === 3 && !self.isIntegerString(parts[2]))) // #reached
+            return false; // #reached #exit
+        let h = parseInt(parts[0]), // #not-reached
+            m = parseInt(parts[1]), // #not-reached
+            s = parts.length === 3 && parseInt(parts[2]); // #not-reached
+        if(isNaN(h) || isNaN(m) || (parts.length === 3 && isNaN(s))){ // #not-reached
+            return false; // #not-reached
+        } // #not-reached
+        if (h < 0 || h > 23 || m < 0 || m > 59 || (s && (s < 0 || s > 59))) // #not-reached
+            return false; // #not-reached
+        return true; // #not-reached
+    }
+```
+
+## Current test case to annotate
+
+### Tested code extract:
+```javascript
+{code}
+```
+
+### Tested function/class: {target_name}
+
+### Test case description: {test_case}
